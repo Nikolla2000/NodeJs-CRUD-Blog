@@ -13,7 +13,7 @@ const port = process.env.PORT || 5000;
 app.get('/', (req,res) => {
   const articles = [{
     title: 'Test article',
-    createDate: Date.now(),
+    createDate: new Date(),
     description: 'test descrition'
   }]
   res.render('index', { articles: articles})
