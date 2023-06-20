@@ -12,7 +12,7 @@ const port = process.env.PORT || 5000;
 //Main Router
 app.get('/', (req,res) => {
   const articles = [{
-    title: 'test article',
+    title: 'Test article',
     createDate: Date.now(),
     description: 'test descrition'
   }]
