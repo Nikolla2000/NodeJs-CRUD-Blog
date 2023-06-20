@@ -16,7 +16,7 @@ app.get('/', (req,res) => {
     createDate: new Date(),
     description: 'test descrition'
   }]
-  res.render('index', { articles: articles})
+  res.render('./articles/index', { articles: articles})
 })
 
 //routers
