@@ -11,7 +11,7 @@ router.get('/:id', async(req, res) => {
     if(article == null) {
         res.redirect('/')
     }
-  res.render('/articles/show', {article: article})
+  res.render('./articles/show', {article: article})
 });
 
 router.post('/', async (req, res) => {
