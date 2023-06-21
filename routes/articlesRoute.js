@@ -3,11 +3,15 @@ const router = express.Router();
 const Article = require('../models/article.model');
 
 router.get('/new', (req, res) => {
-  res.render('./articles/new', { article: {} });
+  res.render('./articles/new', { article: new Article() });
 });
 
-router.get('/:id', (req, res) => {
-  // Implement the logic to fetch an article by ID
+router.get('/:id', async(req, res) => {
+    const article = await Article.findById(req.params.id)
+    if(article == null) {
+        res.redirect('/')
+    }
+  res.render('/articles/show', {article: article})
 });
 
 router.post('/', async (req, res) => {
@@ -21,6 +25,7 @@ router.post('/', async (req, res) => {
     article = await article.save();
     res.redirect(`/articles/${article.id}`);
   } catch (error) {
+    console.log(error);
     res.render('articles/new', { article: article });
   }
 });
