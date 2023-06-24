@@ -17,6 +17,7 @@
                     <h4 class="card-title"><%= article.title %></h4>
                     <p class="card-date text-muted mb-2"><%= article.createDate.toLocaleDateString()%></p>
                     <p class="card-text mb-2"><%= article.description %></p>
+                    <a href="/articles/<%= article.slug%>" class="btn btn-primary">Read More..</a>
                 </div>
             </div>
         <%}); %>

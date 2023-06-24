@@ -2,6 +2,7 @@ require("dotenv").config();
 require("express-async-errors");
 const express = require("express");
 const app = express();
+const Article = require('./models/article.model')
 
 //connectDB
 const connectDB = require("./db/connect");
@@ -10,12 +11,10 @@ const connectDB = require("./db/connect");
 const port = process.env.PORT || 5000;
 
 //Main Router
-app.get('/', (req,res) => {
-  const articles = [{
-    title: 'Test article',
-    createDate: new Date(),
-    description: 'test descrition'
-  }]
+app.get('/', async (req,res) => {
+  const articles = await Article.find().sort({
+    createDate: 'desc'
+  })
   res.render('./articles/index', { articles: articles})
 })
 
