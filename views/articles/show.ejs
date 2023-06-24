@@ -19,7 +19,7 @@
                 class="d-inline">
             <button type="submit" class="btn btn-danger">Delete</button>    
         </form>
-        <p><%= article.markdown %></p>
+        <div><%- article.sanitizedHTML %></div>
     </div>
 </body>
 </html>
