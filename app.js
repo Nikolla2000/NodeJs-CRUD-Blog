@@ -3,12 +3,14 @@ require("express-async-errors");
 const express = require("express");
 const app = express();
 const Article = require('./models/article.model')
+const methodOverride = require('method-override');
 
 //connectDB
 const connectDB = require("./db/connect");
 
 //Port
 const port = process.env.PORT || 5000;
+app.use(methodOverride('_method'))
 
 //Main Router
 app.get('/', async (req,res) => {

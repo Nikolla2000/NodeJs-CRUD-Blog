@@ -31,16 +31,17 @@ router.post('/', async (req, res) => {
 });
 
 router.delete('/:id', async (req, res) => {
-  const {id} = req.params
-  try {
-    const articleToDelete = await Articles.findByIdAndDelete(id)
-    if(!articleToDelete){
-      res.status(404).json({ message: 'Article not found'})
-    }
-    res.status(200).json({message: 'Article deleted successfully'})
-  } catch (error) {
-    res.status(500).json({ message: error.message})
-  }
-})
+  const { id } = req.params;
 
+  try {
+    const articleToDelete = await Article.findByIdAndDelete(id);
+    if (!articleToDelete) {
+      res.status(404).json({ message: 'Article not found' });
+    }
+    
+    res.redirect('/');
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 module.exports = router;

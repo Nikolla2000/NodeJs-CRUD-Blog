@@ -14,8 +14,11 @@
         <a href="/articles/edit/<%= article.id %>" 
             class=" btn btn-info"
             style="color:white">Edit</a>
-        <a href="#"
-            class="btn btn-danger">Delete</a>
+        <form action="/articles/<%= article.id %>?_method=DELETE"
+                method="POST"
+                class="d-inline">
+            <button type="submit" class="btn btn-danger">Delete</button>    
+        </form>
         <p><%= article.markdown %></p>
     </div>
 </body>
